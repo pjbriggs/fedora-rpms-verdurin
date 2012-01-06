@@ -6,8 +6,8 @@
 %global SCRIPTS		"%{_builddir}/%{_bindir}"
 
 Name:           ucsc-tools
-Version:        248
-Release:        6%{?dist}
+Version:        260
+Release:        1%{?dist}
 Summary:        Various useful bioinformatics tools from UCSC
 
 Group:          Applications/Engineering
@@ -71,6 +71,7 @@ sed -i 's/\${CGI_BIN}-\${USER}/\${CGI_BIN}/g' {} \;
 %endif
 
 mkdir -p %{_builddir}/%{_bindir}
+mkdir -p %{_builddir}%{_builddir}%{_bindir}
 
 # Workaround hardcoded Apache location
 mkdir -p %{_builddir}/%{_localstatedir}/www/html
@@ -135,6 +136,9 @@ rm -rf %{buildroot}
 %{_localstatedir}/www/html/*
 
 %changelog
+* Thu Dec 15 2011 Peter Briggs <peter.briggs@manchester.ac.uk> - 260-1
+- Updated to version 260
+
 * Tue Apr  5 2011 Adam Huffman <bloch@verdurin.com> - 248-6
 - subpackage for browser files
 
