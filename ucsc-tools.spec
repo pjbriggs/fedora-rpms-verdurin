@@ -13,7 +13,7 @@ Summary:        Various useful bioinformatics tools from UCSC
 Group:          Applications/Engineering
 License:        GPLv2
 URL:            http://genomewiki.ucsc.edu/index.php/Main_Page
-Source0:        jksrc.v%{version}.zip
+Source0:        http://genomewiki.ucsc.edu/index.php/Main_Page/jksrc.v%{version}.zip
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:  mysql-devel libpng-devel zlib-devel rsync
@@ -136,8 +136,10 @@ rm -rf %{buildroot}
 %{_localstatedir}/www/html/*
 
 %changelog
-* Thu Dec 15 2011 Peter Briggs <peter.briggs@manchester.ac.uk> - 260-1
-- Updated to version 260
+* Wed Jan 11 2012 Adam Huffman <verdurin@fedoraproject.org> - 260-1
+- update to v260
+- fix source URL
+- another ugly build fix, thanks to peter Briggs
 
 * Tue Apr  5 2011 Adam Huffman <bloch@verdurin.com> - 248-6
 - subpackage for browser files
