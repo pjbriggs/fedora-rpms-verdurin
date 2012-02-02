@@ -1,12 +1,12 @@
 Name:           hts-preprocess
 Version:        0.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        High-Throughput Sequencing preprocessing scripts
 
 Group:          Development/Libraries
 License:        GPLv3
 URL:            http://hts.rutgers.edu/filter/
-Source0:        http://hts.rutgers.edu/filter/preprocess_files.zip
+Source0:        http://hts.rutgers.edu/filter/SOLiD_preprocess.zip
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildArch:      noarch
@@ -44,6 +44,9 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Thu Feb  2 2012 Peter Briggs <peter.briggs@manchester.ac.uk> - 0.1-2
+- update name of source zip file
+
 * Tue May 25 2010 Adam Huffman <bloch@verdurin.com> - 
 - initial version
 
