@@ -1,8 +1,8 @@
 %global		zipname	picard-tools
 
 Name:		picard-tools-bin
-Version:	1.50
-Release:	2%{?dist}
+Version:	1.61
+Release:	1%{?dist}
 Summary:	Java utilities to manipulate SAM files
 
 Group:		Applications/Engineering
@@ -57,6 +57,9 @@ rm -rf %{buildroot}
 %{_javadir}/%{zipname}/*
 
 %changelog
+* Mon Feb 13 2012 Peter Briggs <peter.briggs@manchester.ac.uk> - 1.61-1
+- updated to picard-tools 1.61
+
 * Tue Aug 23 2011 Adam Huffman <bloch@verdurin.com> - 1.50-2
 - change to picard-tools-bin
 
