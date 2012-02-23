@@ -1,5 +1,5 @@
---- Mothur.source/makefile	2011-08-11 17:59:56.000000000 +0100
-+++ Mothur.source.new/makefile	2011-08-19 16:12:29.527671335 +0100
+--- Mothur.source/makefile	2012-01-17 18:10:16.000000000 +0000
++++ Mothur.source.new/makefile	2012-02-13 15:57:14.655681985 +0000
 @@ -13,7 +13,7 @@
  64BIT_VERSION ?= yes
  USEREADLINE ?= yes
@@ -7,9 +7,9 @@
 -USECOMPRESSION ?= no
 +USECOMPRESSION ?= yes
  MOTHUR_FILES="\"Enter_your_default_path_here\""
- RELEASE_DATE = "\"8/11/2011\""
- VERSION = "\"1.21.1\""
-@@ -26,7 +26,7 @@
+ RELEASE_DATE = "\"1/17/2012\""
+ VERSION = "\"1.23.1\""
+@@ -27,7 +27,7 @@
  	#CXX = g++44
  	
  	#if you are a mac user use the following line
@@ -18,12 +18,12 @@
  	
  	#if you using cygwin to build Windows the following line
  	#CXX = x86_64-w64-mingw32-g++
-@@ -34,7 +34,7 @@
-  	#TARGET_ARCH += -m64
+@@ -35,7 +35,7 @@
+  	#TARGET_ARCH += -m64 -static
  
  	#if you are a linux user use the following line
 -	#CXXFLAGS += -mtune=native -march=native -m64
 +	CXXFLAGS += -mtune=native -march=native -m64
  	
- 	 CXXFLAGS += -DBIT_VERSION
+ 	CXXFLAGS += -DBIT_VERSION
  endif

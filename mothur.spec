@@ -1,17 +1,19 @@
 Name:           mothur
-Version:        1.21.1
-Release:        3%{?dist}
+Version:        1.23.1
+Release:        1%{?dist}
 Summary:	Computational microbial ecology tool 
 
 Group:		Applications/Engineering
 License:	GPLv3
 URL:		http://www.%{name}.org
-Source0:	http://www.%{name}.org/w/images/6/64/Mothur.1.21.1.zip
+Source0:	http://www.%{name}.org/w/images/3/33/Mothur.1.23.1.zip
 patch0:		%{name}-makefile.patch
+patch1:		%{name}-uchime-mk.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:	ncurses-devel
 BuildRequires:	readline-devel
+BuildRequires:	gcc-gfortran
 
 
 %description
@@ -29,8 +31,9 @@ features including calculators and visualization tools.
 %prep
 #Deal with mistakenly included OS X files
 %setup -q   -n Mothur.source
-rm -rf __MACOSX* .DS_Store
+rm -rf __MACOSX*
 %patch0 -p1
+%patch1 -p1
 
 %build
 
@@ -42,6 +45,7 @@ rm -rf %{buildroot}
 
 mkdir -p %{buildroot}%{_bindir}
 install -m 0755 %{name} %{buildroot}%{_bindir}
+install -m 0755 uchime %{buildroot}%{_bindir}
 
 %clean
 rm -rf %{buildroot}
@@ -49,11 +53,16 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root,-)
-%doc LICENSE
+# No LICENSE file included in 1.23.1
+#%doc LICENSE
 %{_bindir}/%{name}
+%{_bindir}/uchime
 
 
 %changelog
+* Mon Feb 13 2012 Peter Briggs <peter.briggs@manchester.ac.uk> - 1.23.1-1
+- update to upstream release 1.23.1
+
 * Tue Aug 23 2011 Adam Huffman <bloch@verdurin.com> - 1.21.1-3
 - various style cleanups
 

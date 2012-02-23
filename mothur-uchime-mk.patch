@@ -1,0 +1,15 @@
+--- Mothur.source/uchime_src/mk	2011-11-07 19:09:33.000000000 +0000
++++ Mothur.source.new/uchime_src/mk	2012-02-13 15:54:12.209665759 +0000
+@@ -14,9 +14,9 @@
+ done
+ 
+ LINK_OPTS= 
+-if [ `uname -s` == Linux ] ; then
+-    LINK_OPTS=-static
+-fi
++#if [ `uname -s` == Linux ] ; then
++#    LINK_OPTS=-static
++#fi
+ g++ $LINK_OPTS $ENV_LINK_OPTS -g -o uchime $ObjNames >> mk.stdout 2>> tmp.stderr
+ cat tmp.stderr
+ cat tmp.stderr >> mk.stderr
