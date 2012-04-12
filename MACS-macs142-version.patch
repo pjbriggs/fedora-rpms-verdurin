@@ -1,0 +1,12 @@
+diff -ru taoliu-MACS-94f2543/bin/macs14 taoliu-MACS-94f2543.new/bin/macs14
+--- taoliu-MACS-94f2543/bin/macs14	2011-12-07 22:28:00.000000000 +0000
++++ taoliu-MACS-94f2543.new/bin/macs14	2012-04-12 11:25:27.045402493 +0100
+@@ -220,7 +220,7 @@
+ """
+     description = "%prog -- Model-based Analysis for ChIP-Sequencing"
+ 
+-    optparser = OptionParser(version="%prog 1.4.1 20110622",description=description,usage=usage,add_help_option=False)
++    optparser = OptionParser(version="%prog 1.4.2 20111207",description=description,usage=usage,add_help_option=False)
+     optparser.add_option("-h","--help",action="help",help="show this help message and exit.")
+     optparser.add_option("-t","--treatment",dest="tfile",type="string",
+                          help="ChIP-seq treatment files. REQUIRED. When ELANDMULTIPET is selected, you must provide two files separated by comma, e.g. s_1_1_eland_multi.txt,s_1_2_eland_multi.txt")
