@@ -7,8 +7,8 @@
 -USECOMPRESSION ?= no
 +USECOMPRESSION ?= yes
  MOTHUR_FILES="\"Enter_your_default_path_here\""
- RELEASE_DATE = "\"1/17/2012\""
- VERSION = "\"1.23.1\""
+ RELEASE_DATE = "\"5/1/2012\""
+ VERSION = "\"1.25.0\""
 @@ -27,7 +27,7 @@
  	#CXX = g++44
  	
@@ -26,4 +26,4 @@
 +	CXXFLAGS += -mtune=native -march=native -m64
  	
  	CXXFLAGS += -DBIT_VERSION
- endif
+     FORTRAN_FLAGS = -m64

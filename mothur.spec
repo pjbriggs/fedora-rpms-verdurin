@@ -1,12 +1,12 @@
 Name:           mothur
-Version:        1.23.1
+Version:        1.25.0
 Release:        1%{?dist}
 Summary:	Computational microbial ecology tool 
 
 Group:		Applications/Engineering
 License:	GPLv3
 URL:		http://www.%{name}.org
-Source0:	http://www.%{name}.org/w/images/3/33/Mothur.1.23.1.zip
+Source0:	http://www.%{name}.org/w/images/6/6d/Mothur.1.25.0.zip
 patch0:		%{name}-makefile.patch
 patch1:		%{name}-uchime-mk.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
@@ -53,13 +53,15 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root,-)
-# No LICENSE file included in 1.23.1
-#%doc LICENSE
+%doc LICENSE
 %{_bindir}/%{name}
 %{_bindir}/uchime
 
 
 %changelog
+* Fri May  4 2012 Peter Briggs <peter.briggs@manchester.ac.uk> - 1.25.0-1
+- update to upstream release 1.25.0
+
 * Mon Feb 13 2012 Peter Briggs <peter.briggs@manchester.ac.uk> - 1.23.1-1
 - update to upstream release 1.23.1
 
