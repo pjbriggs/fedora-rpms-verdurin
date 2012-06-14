@@ -1,6 +1,6 @@
 Name:		fastq_screen
-Version:	0.2.1
-Release:	2%{?dist}
+Version:	0.3.1
+Release:	1%{?dist}
 Summary:	Contamination screening for next-gen sequence data
 
 Group:		Applications/Engineering
@@ -22,7 +22,7 @@ of a QC pipeline to confirm that a library comes from the expected
 source, and to help identify any sources of contamination.
 
 %prep
-%setup -q -n %{name}_v%{version}
+%setup -q -n FastQScreen_v%{version}
 
 cp -p %{SOURCE1} .
 
@@ -47,12 +47,15 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root,-)
-%doc README.txt RELEASE_NOTES.txt fastq_screen-README.Fedora
+%doc README.txt license.txt RELEASE_NOTES.txt fastq_screen-README.Fedora
 %config(noreplace) %{_sysconfdir}/%{name}.conf
 %{_bindir}/%{name}
 
 
 %changelog
+* Wed Jun 13 2012 Peter Briggs <peter.briggs@manchester.ac.uk> - 0.3.1-1
+- updated to version 0.3.1
+
 * Wed Aug 10 2011 Adam Huffman <bloch@verdurin.com> - 0.2.1-2
 - add README explaining use of fastq_screen.conf
 
