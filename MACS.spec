@@ -1,6 +1,6 @@
 Name:		    MACS
 Version:	    1.4.2
-Release:	    1%{?dist}
+Release:	    2%{?dist}
 Summary:	    Model-based Analysis for ChIP-Seq
 
 Group:		    Applications/Engineering
@@ -8,8 +8,7 @@ License:	    Artistic 2.0
 URL:		    http://liulab.dfci.harvard.edu/MACS/index.html
 #Source now available on Github
 #Source0:   https://github.com/taoliu/MACS/tarball/v1.4.1
-Source0:	    taoliu-MACS-v1.4.2-0-g26a7258.tar.gz
-patch0:		    MACS-macs142-version.patch
+Source0:	    MACS-1.4.2-1.tar.gz
 BuildRoot:	    %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildArch:	    noarch
@@ -34,9 +33,7 @@ algorithms, is publicly available open source, and can be used for
 ChIP-Seq with or without control samples.
 
 %prep
-%setup -q -n taoliu-MACS-94f2543
-# Patch to fix bad version number in 'macs14'
-%patch0 -p1
+%setup -q -n MACS-1.4.2
 
 %build
 %{__python} setup.py build
@@ -46,8 +43,8 @@ rm -rf %{buildroot}
 
 %{__python} setup.py install -O1 --skip-build --root %{buildroot}
 
-mkdir -p %{buildroot}/%{_mandir}/man1
-install -m 0644 DEBIAN/macs.man %{buildroot}/%{_mandir}/man1/macs.1
+#mkdir -p %{buildroot}/%{_mandir}/man1
+#install -m 0644 DEBIAN/macs.man %{buildroot}/%{_mandir}/man1/macs.1
 
 %clean
 rm -rf %{buildroot}
@@ -56,7 +53,7 @@ rm -rf %{buildroot}
 %files
 %defattr(-,root,root,-)
 %doc README ChangeLog COPYING NEW_IN_MACS14
-%{_mandir}/man1/macs.1.*
+#%{_mandir}/man1/macs.1.*
 %{python_sitelib}/%{name}*
 %{python_sitelib}/%{name}-%{version}-py*.egg*
 %{_bindir}/macs14
@@ -65,6 +62,9 @@ rm -rf %{buildroot}
 %{_bindir}/wignorm
 
 %changelog
+* Fri Jul 20 2012 Peter Briggs <peter.briggs@manchester.ac.uk> - 1.4.2-2
+- update to upstream patched version 1.4.2-1
+
 * Wed Apr 11 2012 Peter Briggs <peter.briggs@manchester.ac.uk> - 1.4.2-1
 - new upstream release 1.4.2
 - see https://github.com/taoliu/MACS/blob/macs_v1/ChangeLog for fixes
