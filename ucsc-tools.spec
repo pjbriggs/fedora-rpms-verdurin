@@ -6,7 +6,7 @@
 %global SCRIPTS		"%{_builddir}/%{_bindir}"
 
 Name:           ucsc-tools
-Version:        260
+Version:        273
 Release:        1%{?dist}
 Summary:        Various useful bioinformatics tools from UCSC
 
@@ -14,6 +14,7 @@ Group:          Applications/Engineering
 License:        GPLv2
 URL:            http://genomewiki.ucsc.edu/index.php/Main_Page
 Source0:        http://genomewiki.ucsc.edu/index.php/Main_Page/jksrc.v%{version}.zip
+Patch0:		%{name}-%{version}.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:  mysql-devel libpng-devel zlib-devel rsync
@@ -34,7 +35,7 @@ Files needed for a local UCSC Genome Browser installation
 
 %prep
 %setup -q -n kent
-
+%patch0 -p1
 
 # Filter unwanted Requires:
 mkdir %{_builddir}/%{name}-%{version}
@@ -115,6 +116,9 @@ install -m 0755 %{_builddir}/var/www/cgi-bin/* %{buildroot}/%{_localstatedir}/ww
 
 install -m 0755 %{_builddir}%{_bindir}/* %{buildroot}/%{_bindir}
 
+# Include scripts
+install -m 0755 src/utils/userApps/fetchChromSizes %{buildroot}/%{_bindir}
+
 # super-ugly hack until all build paths fixed
 install -m 0755 %{_builddir}%{_builddir}%{_bindir}/* %{buildroot}/%{_bindir}
 
@@ -136,6 +140,9 @@ rm -rf %{buildroot}
 %{_localstatedir}/www/html/*
 
 %changelog
+* Thu Sep 27 2012 Peter Briggs <peter.briggs@manchester.ac.uk> - 273-1
+- update to v273
+
 * Wed Jan 11 2012 Adam Huffman <verdurin@fedoraproject.org> - 260-1
 - update to v260
 - fix source URL

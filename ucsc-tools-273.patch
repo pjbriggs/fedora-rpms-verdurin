@@ -1,0 +1,38 @@
+diff -r -u kent/src/hg/utils/makefile kent.patched/src/hg/utils/makefile
+--- kent/src/hg/utils/makefile	2012-09-26 10:38:08.000000000 +0100
++++ kent.patched/src/hg/utils/makefile	2012-09-27 10:50:53.855965520 +0100
+@@ -13,6 +13,7 @@
+ USE_DIRS = $(DIRS)
+ 
+ DIRS = \
++	bedExtendRanges \
+ 	bedToPsl \
+ 	bedWeedOverlapping \
+ 	chromGraphFromBin \
+@@ -38,6 +39,7 @@
+ 	pslMap \
+ 	pslUniq \
+ 	makeTrackIndex \
++	makeTableList \
+ 	geoMirrorNode
+ 
+ TEST_DIRS = \
+diff -r -u kent/src/utils/makefile kent.patched/src/utils/makefile
+--- kent/src/utils/makefile	2012-09-26 10:38:08.000000000 +0100
++++ kent.patched/src/utils/makefile	2012-09-27 10:49:59.880487202 +0100
+@@ -97,6 +97,7 @@
+ 	faNoise \
+ 	faOneRecord \
+ 	faPolyASizes \
++	faRandomize \
+ 	faRc \
+ 	faSimplify \
+ 	faSize \
+@@ -125,6 +126,7 @@
+ 	nibSize \
+ 	nt4Frag \
+ 	paraFetch \
++	paraSync \
+ 	pslLiftSubrangeBlat \
+ 	pslToPslx \
+ 	pslToXa \
