@@ -1,13 +1,13 @@
 Name:		yoshimi
-Version:	0.060.12
-Release:	3%{?dist}
+Version:	1.0.0
+Release:	1%{?dist}
 Summary:	Rewrite of ZynAddSubFx aiming for better JACK support
 
 Group:		Applications/Multimedia
 License:	GPLv2+
 URL:		http://sourceforge.net/projects/%{name}
 Source0:	http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2
-Source1:	%{name}.desktop
+#Source1:	%{name}.desktop
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:	jack-audio-connection-kit-devel
@@ -79,10 +79,12 @@ if [ $1 -eq 0 ]; then
   gtk-update-icon-cache %{_datadir}/icons/hicolor/scalable/apps >&/dev/null || :
 fi
 
+%posttrans
+/usr/bin/gtk-update-icon-cache %{_datadir}/icons/hicolor.scalable/apps &>/dev/null || :
 
 %files
 %defattr(-,root,root,-)
-%doc 0.060.12.notes COPYING
+%doc %{version}.notes COPYING
 %{_bindir}/%{name}
 %{_datadir}/%{name}/banks/
 %{_datadir}/applications/%{name}.desktop
@@ -90,6 +92,12 @@ fi
 %{_datadir}/%{name}/presets/
 
 %changelog
+* Sun Jul 29 2012  <bloch@verdurin.com> - 1.0.0-1
+- Update to first stable release 1.0.0
+
+* Sun Apr 15 2012 Adam Huffman <verdurin@fedoraproject.org> - 0.060.12-4
+- add missing posttrans scriptlet
+
 * Mon Feb 20 2012 Adam Huffman <verdurin@fedoraproject.org> - 0.060.12-3
 - re-add downstream desktop file
 - remove extra .bankdir file
