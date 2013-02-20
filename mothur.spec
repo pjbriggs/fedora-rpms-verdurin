@@ -1,12 +1,12 @@
 Name:           mothur
-Version:        1.25.0
+Version:        1.27.0
 Release:        1%{?dist}
 Summary:	Computational microbial ecology tool 
 
 Group:		Applications/Engineering
 License:	GPLv3
 URL:		http://www.%{name}.org
-Source0:	http://www.%{name}.org/w/images/6/6d/Mothur.1.25.0.zip
+Source0:	http://www.%{name}.org/w/images/c/cb/Mothur.1.27.0.zip
 patch0:		%{name}-makefile.patch
 patch1:		%{name}-uchime-mk.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
@@ -59,6 +59,9 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Wed Feb 20 2013 Peter Briggs <peter.briggs@manchester.ac.uk> - 1.27.0-1
+- update to upstream release 1.27.0
+
 * Fri May  4 2012 Peter Briggs <peter.briggs@manchester.ac.uk> - 1.25.0-1
 - update to upstream release 1.25.0
 
