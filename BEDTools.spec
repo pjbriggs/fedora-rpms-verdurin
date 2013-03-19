@@ -1,5 +1,5 @@
 Name:		BEDTools
-Version:	2.15.0
+Version:	2.17.0
 Release:	1%{?dist}
 Summary:	A flexible suite of utilities for comparing genomic features
 
@@ -38,7 +38,7 @@ PDF manual for the BEDTools utilities.
 
 
 %prep
-%setup -q -n %{name}-Version-%{version}
+%setup -q -n bedtools-%{version}
 
 # remove bundled curl library
 rm -rf src/utils/curl
@@ -75,6 +75,7 @@ rm -rf %{buildroot}
 %dir %{_datadir}/%{name}
 %{_bindir}/annotateBed
 %{_bindir}/bamToBed
+%{_bindir}/bamToFastq
 %{_bindir}/bed12ToBed6
 %{_bindir}/bedpeToBam
 %{_bindir}/bedToBam
@@ -85,6 +86,7 @@ rm -rf %{buildroot}
 %{_bindir}/complementBed
 %{_bindir}/coverageBed
 #%{_bindir}/cuffToTrans
+%{_bindir}/expandCols
 %{_bindir}/fastaFromBed
 #%{_bindir}/fjoin
 %{_bindir}/flankBed
@@ -93,6 +95,7 @@ rm -rf %{buildroot}
 %{_bindir}/groupBy
 %{_bindir}/intersectBed
 %{_bindir}/linksBed
+%{_bindir}/mapBed
 %{_bindir}/maskFastaFromBed
 %{_bindir}/mergeBed
 %{_bindir}/multiBamCov
@@ -100,6 +103,7 @@ rm -rf %{buildroot}
 %{_bindir}/nucBed
 %{_bindir}/pairToBed
 %{_bindir}/pairToPair
+%{_bindir}/randomBed
 %{_bindir}/shuffleBed
 %{_bindir}/slopBed
 %{_bindir}/sortBed
@@ -117,6 +121,10 @@ rm -rf %{buildroot}
 %doc %{name}-User-Manual.v4.pdf
 
 %changelog
+* Tue Mar 19 2013 Peter Briggs <peter.briggs@manchester.ac.uk> - 2.17.0-1
+- update to new upstream release 2.17.0
+- add 'bamToFastq', 'expandCols', 'mapBed', 'randomBed'
+
 * Wed Jan  4 2012 Adam Huffman <verdurin@fedoraproject.org> - 2.15.0-1
 - update to new upstream release 2.15.0
 - new unified command line interface 'bedtools'
