@@ -1,5 +1,5 @@
---- Mothur.source/makefile	2012-08-06 14:15:32.000000000 +0100
-+++ Mothur.source.new/makefile	2013-02-20 15:05:33.146621001 +0000
+--- Mothur.source/makefile	2013-06-13 14:47:25.000000000 +0100
++++ Mothur.source.1.31.2/makefile	2013-06-28 10:20:58.122668317 +0100
 @@ -13,7 +13,7 @@
  64BIT_VERSION ?= yes
  USEREADLINE ?= yes
@@ -7,8 +7,8 @@
 -USECOMPRESSION ?= no
 +USECOMPRESSION ?= yes
  MOTHUR_FILES="\"Enter_your_default_path_here\""
- RELEASE_DATE = "\"8/8/2012\""
- VERSION = "\"1.27.0\""
+ RELEASE_DATE = "\"6/13/2013\""
+ VERSION = "\"1.31.2\""
 @@ -28,7 +28,7 @@
  	#CXX = g++44
  	
@@ -26,4 +26,4 @@
 +	CXXFLAGS += -mtune=native -march=native -m64
  	
  	CXXFLAGS += -DBIT_VERSION 
-     	FORTRAN_FLAGS = -m64
+     FORTRAN_FLAGS = -m64

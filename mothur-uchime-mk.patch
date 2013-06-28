@@ -1,5 +1,5 @@
---- Mothur.source/uchime_src/mk	2011-11-07 19:09:33.000000000 +0000
-+++ Mothur.source.new/uchime_src/mk	2012-02-13 15:54:12.209665759 +0000
+--- Mothur.source/uchime_src/mk	2013-02-15 15:27:03.000000000 +0000
++++ Mothur.source.1.31.2/uchime_src/mk	2013-06-28 10:21:08.460710133 +0100
 @@ -14,9 +14,9 @@
  done
  
