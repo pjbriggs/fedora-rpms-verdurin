@@ -1,6 +1,6 @@
 Name:		tabix
-Version:	0.2.5
-Release:	2%{?dist}
+Version:	0.2.6
+Release:	1%{?dist}
 Summary:	Generic indexer for TAB-delimited genome position files
 
 Group:		Applications/Engineering
@@ -10,6 +10,7 @@ Source0:	http://download.sourceforge.net/samtools/%{name}-%{version}.tar.bz2
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:	zlib-devel
+BuildRequires:	python-devel
 BuildRequires:	perl(Exporter)
 BuildRequires:	perl(ExtUtils::MakeMaker)
 BuildRequires:	perl(Test::Simple)
@@ -33,13 +34,16 @@ locally.
 
 
 %build
-make %{?_smp_mflags} CFLAGS="%{optflags}"
+make %{?_smp_mflags} CFLAGS="%{optflags} -fPIC"
 
 # Perl module not built by default - in separate subdir.
 cd perl
-%{__perl} Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
+%{__perl} Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags} -fPIC"
 make %{?_smp_mflags} 
 
+# Python module not built by default - in separate subdir
+cd ../python
+%{__python} setup.py build
 
 %install
 rm -rf %{buildroot}
@@ -57,6 +61,9 @@ find %{buildroot} -type f -name .packlist -exec rm -f {} ';'
 find %{buildroot} -depth -type d -exec rmdir {} 2>/dev/null ';'
 %{_fixperms} %{buildroot}/*
 rm %{buildroot}%{perl_vendorarch}/auto/Tabix/Tabix.bs
+
+cd ../python
+%{__python} setup.py install -O1 --root=%{buildroot} --record=INSTALLED_FILES
 
 %check
 cd perl
@@ -79,8 +86,15 @@ rm -rf %{buildroot}
 %{perl_vendorarch}/*
 %exclude %dir %{perl_vendorarch}/auto/
 
+%{python_sitearch}/*
+
 
 %changelog
+* Mon Jul  1 2013 Peter Briggs <peter.briggs@manchester.ac.uk> - 0.2.6-1
+- new upstream version
+- added -fPIC to CFLAGS (required for shared libs)
+- include python code not compiled by default
+
 * Wed Oct 12 2011 Adam Huffman <bloch@verdurin.com> - 0.2.5-2
 - use Fedora CFLAGS
 
