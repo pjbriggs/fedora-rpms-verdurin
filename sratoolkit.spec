@@ -5,16 +5,21 @@
 %define __find_provides %{nil}
 %define __find_requires %{nil}
 
+# Work around fact that archive version is now of the form "2.3.3-4"
+# Use of hyphen conflicts with RPM's own versioning scheme
+%define sratoolkit_version 2.3.3
+%define sratoolkit_release 4
+
 
 Name:           sratoolkit
-Version:        2.1.8
+Version:        %{sratoolkit_version}.%{sratoolkit_release}
 Release:        1%{?dist}
 Summary:        Binary distribution of Short Read Archive toolkit
 
 Group:          Applications/Engineering
 License:        Public Domain
 URL:            http://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?cmd=show&f=software&m=software&s=software
-Source0:        %{name}.%{version}-centos_linux64.tar.gz
+Source0:        %{name}.2.3.3-4-centos_linux64.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 
@@ -24,6 +29,7 @@ Various tools for working with Short Read Archive files, including
 conversion tools to other formats
 
 %prep
+%setup -n %{name}.%{sratoolkit_version}-%{sratoolkit_release}-centos_linux64
 
 %build
 
@@ -36,11 +42,11 @@ mkdir -p %{buildroot}%{_bindir}
 cd %{buildroot}
 tar zxf %SOURCE0
 
-cd %{name}.%{version}-centos_linux64
-mv README help/ %{buildroot}%{_docdir}/%{name}-%{version}
-mv * %{buildroot}%{_bindir}
+cd %{name}.%{sratoolkit_version}-%{sratoolkit_release}-centos_linux64
+mv README schema %{buildroot}%{_docdir}/%{name}-%{version}
+mv bin/* %{buildroot}%{_bindir}
 cd ..
-rm -rf %{name}.%{version}-centos_linux64
+rm -rf %{name}.%{sratoolkit_version}-%{sratoolkit_release}-centos_linux64
 
 %clean
 rm -rf %{buildroot}
@@ -49,11 +55,14 @@ rm -rf %{buildroot}
 %files
 %defattr(-,root,root,-)
 %doc %{_docdir}/%{name}-%{version}/README
-%doc %{_docdir}/%{name}-%{version}/help
+%doc %{_docdir}/%{name}-%{version}/schema
 
-%{_bindir}*
+%{_bindir}/*
 
 %changelog
+* Thu Oct 10 2013 Peter Briggs <peter.briggs@manchester.ac.uk> - 2.3.3-1
+- Updated sratoolkit to version 2.3.3-4
+
 * Wed Dec 14 2011 Peter Briggs <peter.briggs@manchester.ac.uk> - 2.1.8-1
 - Updated sratoolkit to version 2.1.8
 
